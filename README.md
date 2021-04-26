@@ -1,5 +1,5 @@
-# OpenBTL-STM32
-A generic OpenBTL for any STM32 board using Stm32duino
+# OpenBLT-STM32
+A generic OpenBLT for any STM32 board using Stm32duino
 
 # Why?
 
