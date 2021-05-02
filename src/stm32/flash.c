@@ -673,6 +673,7 @@ static blt_bool FlashWriteBlock(tFlashBlockInfo *block)
   return result;
 } /*** end of FlashWriteBlock ***/
 
+#if defined(STM32F1)
 /************************************************************************************//**
 ** \brief     Determines the flash sector base address.
 ** \param     sector Sector to get the base address of.
@@ -720,6 +721,7 @@ static blt_addr FlashGetSectorSize(blt_int8u sector)
   /* still here so no valid sector found */
   return 0;
 } /*** end of FlashGetSectorSize ***/
+#endif
 
 /************************************************************************************//**
 ** \brief     Erases the flash sectors from first_sector up until last_sector.
