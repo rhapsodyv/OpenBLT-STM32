@@ -16,6 +16,10 @@
 #define DEV_USB		2	/* Example: Map USB MSD to physical drive 2 */
 
 
+extern DSTATUS SD_disk_initialize();
+extern DSTATUS SD_disk_status();
+extern DSTATUS SD_disk_read(BYTE *buff, LBA_t sector, UINT count);
+extern DSTATUS SD_disk_write(const BYTE *buff, LBA_t sector, UINT count);
 /*-----------------------------------------------------------------------*/
 /* Get Drive Status                                                      */
 /*-----------------------------------------------------------------------*/
@@ -24,8 +28,8 @@ DSTATUS disk_status (
 	BYTE pdrv		/* Physical drive nmuber to identify the drive */
 )
 {
-	DSTATUS stat;
-	int result;
+	// DSTATUS stat;
+	// int result;
 
 	switch (pdrv) {
 	case DEV_SD :
@@ -62,8 +66,8 @@ DSTATUS disk_initialize (
 	BYTE pdrv				/* Physical drive nmuber to identify the drive */
 )
 {
-	DSTATUS stat;
-	int result;
+	// DSTATUS stat;
+	// int result;
 
 	switch (pdrv) {
 	case DEV_SD :
@@ -103,8 +107,8 @@ DRESULT disk_read (
 	UINT count		/* Number of sectors to read */
 )
 {
-	DRESULT res;
-	int result;
+	// DRESULT res;
+	// int result;
 
 	switch (pdrv) {
 	case DEV_SD :
@@ -154,8 +158,8 @@ DRESULT disk_write (
 	UINT count			/* Number of sectors to write */
 )
 {
-	DRESULT res;
-	int result;
+	// DRESULT res;
+	// int result;
 
 	switch (pdrv) {
 	case DEV_SD :
@@ -202,28 +206,28 @@ DRESULT disk_ioctl (
 	void *buff		/* Buffer to send/receive control data */
 )
 {
-	DRESULT res;
-	int result;
+	// DRESULT res;
+	// int result;
 
-	switch (pdrv) {
-	case DEV_SD :
+	// switch (pdrv) {
+	// case DEV_SD :
 
-		// Process of the command for the RAM drive
+	// 	// Process of the command for the RAM drive
 
-		return res;
+	// 	return res;
 
-	case DEV_MMC :
+	// case DEV_MMC :
 
-		// Process of the command for the MMC/SD card
+	// 	// Process of the command for the MMC/SD card
 
-		return res;
+	// 	return res;
 
-	case DEV_USB :
+	// case DEV_USB :
 
-		// Process of the command the USB drive
+	// 	// Process of the command the USB drive
 
-		return res;
-	}
+	// 	return res;
+	// }
 
 	return RES_PARERR;
 }

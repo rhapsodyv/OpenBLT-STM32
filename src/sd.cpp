@@ -29,7 +29,7 @@ extern "C" DSTATUS SD_disk_read(BYTE *buff, LBA_t sector, UINT count) {
     return 0;
 }
 
-extern "C" DSTATUS SD_disk_write(BYTE *buff, LBA_t sector, UINT count) {
+extern "C" DSTATUS SD_disk_write(const BYTE *buff, LBA_t sector, UINT count) {
     for (UINT i = 0; i < count; i++) {
         if (card.writeBlock(sector, buff) == 0) 
             return 1;
