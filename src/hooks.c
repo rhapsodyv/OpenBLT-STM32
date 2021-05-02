@@ -317,8 +317,6 @@ blt_int8u XcpVerifyKeyHook(blt_int8u resource, blt_int8u *key, blt_int8u len)
 /****************************************************************************************
 * Constant data declarations
 ****************************************************************************************/
-/** \brief Firmware filename. */
-static const blt_char firmwareFilename[] = "/firmware.srec";
 
 
 /****************************************************************************************
@@ -353,7 +351,7 @@ blt_bool FileIsFirmwareUpdateRequestedHook(void)
    * bootlog.txt and additionally outputted on UART @57600 bps for debugging purposes.
    */
   /* check if firmware file is present and SD-card is accessible */
-  if (f_stat(firmwareFilename, &fileInfoObject) == FR_OK) 
+  if (f_stat(FIRMWARE_FILENAME, &fileInfoObject) == FR_OK) 
   {
     /* check if the filesize is valid and that it is not a directory */
     if ( (fileInfoObject.fsize > 0) && (!(fileInfoObject.fattrib & AM_DIR)) )
@@ -378,7 +376,7 @@ blt_bool FileIsFirmwareUpdateRequestedHook(void)
 ****************************************************************************************/
 const blt_char *FileGetFirmwareFilenameHook(void)
 {
-  return firmwareFilename;
+  return FIRMWARE_FILENAME;
 } /*** end of FileGetFirmwareFilenameHook ***/
 
 
@@ -412,9 +410,6 @@ void FileFirmwareUpdateStartedHook(void)
 ****************************************************************************************/
 void FileFirmwareUpdateCompletedHook(void)
 {
-  const char* updatedSuffix = ".updated";
-  char newFirmwareFilename[50];
-
   #if (BOOT_FILE_LOGGING_ENABLE > 0)
   blt_int32u timeoutTime;
 
@@ -440,10 +435,8 @@ void FileFirmwareUpdateCompletedHook(void)
   #endif
 
   /* now rename the firmware file from the disk since the update was successful */
-  strcpy(newFirmwareFilename, firmwareFilename);
-  strcat(newFirmwareFilename, updatedSuffix);
-  f_unlink(newFirmwareFilename);   // remove old if exists
-  f_rename(firmwareFilename, newFirmwareFilename);
+  f_unlink(FIRMWARE_FILENAME_RENAME);   // remove old if exists
+  f_rename(FIRMWARE_FILENAME, FIRMWARE_FILENAME_RENAME);
 
 } /*** end of FileFirmwareUpdateCompletedHook ***/
 #endif /* BOOT_FILE_COMPLETED_HOOK_ENABLE > 0 */

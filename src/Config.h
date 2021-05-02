@@ -20,3 +20,6 @@
 #define SDCARD_MOSI_PIN                     PA7
 #define SD_DETECT_PIN                       -1
 #define SPI_SPEED                           2
+
+#define FIRMWARE_FILENAME                   "firmware.srec"
+#define FIRMWARE_FILENAME_RENAME            "firmware.cur"
