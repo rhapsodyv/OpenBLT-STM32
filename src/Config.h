@@ -21,5 +21,5 @@
 #define SD_DETECT_PIN                       -1
 #define SPI_SPEED                           2
 
-#define FIRMWARE_FILENAME                   "firmware.srec"
+#define FIRMWARE_FILENAME                   "firmware.bin"
 #define FIRMWARE_FILENAME_RENAME            "firmware.cur"
